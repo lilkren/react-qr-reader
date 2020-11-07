@@ -2,9 +2,9 @@ export const getDeviceId = async (
   videoInputDevices: MediaDeviceInfo[],
   facingMode: VideoFacingModeEnum
 ): Promise<string> => {
-  videoInputDevices = videoInputDevices.filter(
-    (deviceInfo: MediaDeviceInfo) => deviceInfo.kind === 'videoinput'
-  );
+//   videoInputDevices = videoInputDevices.filter(
+//     (deviceInfo: MediaDeviceInfo) => deviceInfo.kind === 'videoinput'
+//   );
 
   if (videoInputDevices.length < 1) {
     throw new Error('No video input devices found');
@@ -17,7 +17,7 @@ export const getDeviceId = async (
 
   const devices = await Promise.all(
     videoInputDevices
-      .filter((videoDevice: MediaDeviceInfo) => regex.test(videoDevice.label))
+    //   .filter((videoDevice: MediaDeviceInfo) => regex.test(videoDevice.label))
       .map(async (videoDevice: MediaDeviceInfo) => {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({
